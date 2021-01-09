@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:youtube/CustomSearchDelegate.dart';
 import 'package:youtube/telas/Biblioteca.dart';
 import 'package:youtube/telas/EmAlta.dart';
 import 'package:youtube/telas/Inicio.dart';
@@ -35,24 +37,27 @@ class _HomeState extends State<Home> {
           height: 22,
         ),
         actions: [
-          IconButton(
-              icon: Icon(Icons.videocam),
-              onPressed: (){
-              }
-          ),
+
           IconButton(
               icon: Icon(Icons.search),
-              onPressed: (){
+              onPressed: () async {
+                String res = await showSearch(context: context, delegate: CustomSearchDelegate());
               }
           ),
+          /*
           IconButton(
               icon: Icon(Icons.account_circle),
               onPressed: (){
               }
-          ),
+          ),*/
         ],
       ),
-      body: telas[_indiceSelecionado],
+      body: Container(
+        padding: EdgeInsets.all(16),
+        child: telas[_indiceSelecionado],
+      ),
+
+
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indiceSelecionado,
         onTap: (indice){

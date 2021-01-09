@@ -9,7 +9,7 @@ const ID_CANAL_ORISMILDESNETO = "UC5XRwy5gbEuG2pr3wBVIqYQ";
 
 class Api {
 
-  pesquisar(String pesquisa) async {
+  Future<List<Video>> pesquisar(String pesquisa) async {
 
     http.Response response = await http.get(
       URL_BASE + "search"
@@ -32,9 +32,7 @@ class Api {
           }
       ).toList();
 
-      for( var video in videos ){
-        print("resultado: " + video.titulo);
-      }
+      return videos;
 
     } else {
 
