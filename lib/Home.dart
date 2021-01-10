@@ -15,11 +15,12 @@ class _HomeState extends State<Home> {
   @override
 
   int _indiceSelecionado = 0;
+  String _resultado = "";
 
   Widget build(BuildContext context) {
 
     List<Widget> telas = [
-      Inicio(),
+      Inicio( _resultado ),
       EmAlta(),
       Incricoes(),
       Biblioteca()
@@ -42,6 +43,9 @@ class _HomeState extends State<Home> {
               icon: Icon(Icons.search),
               onPressed: () async {
                 String res = await showSearch(context: context, delegate: CustomSearchDelegate());
+                setState(() {
+                  _resultado = res;
+                });
               }
           ),
           /*

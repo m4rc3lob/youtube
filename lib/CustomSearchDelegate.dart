@@ -19,7 +19,7 @@ class CustomSearchDelegate extends SearchDelegate<String>{
     return IconButton(
         icon: Icon(Icons.arrow_back),
         onPressed: (){
-          close(context, null);
+          close(context, "");
         }
       );
   }
